@@ -8,7 +8,7 @@ OpenCLOS is a project designed to detect driver weariness using a PERCLOS (Propo
 * **Simple Graphical User Interface (GUI):** Provides an intuitive interface for interacting with the system.
 * **Real-time Camera Feed:** Displays live camera input for monitoring.
 
-## Note: I'm really lazy and most of this README is AI-generated haha. So I'm REALLY REALLY sorry If I couldn't list the dependencies T_T
+## Note: I'm really lazy and most of this README is AI-generated haha. So I'm REALLY REALLY sorry If I couldn't list the dependencies T_T Also, this was tested on Fedora 42. (do what you want with that info)
 
 ### Running the GUI
 
