@@ -27,12 +27,13 @@ To launch the OpenCLOS GUI and begin detection:
 
     This command will open the OpenCLOS GUI window.
 
-### Connecting Your Camera
+### Connecting Your Camera & Other Peripherals
 
 Once the GUI is open:
 
 1.  **Click the "Connect" Button:** Locate and tap the "Connect" button within the OpenCLOS GUI.
 2.  **Camera Feedback Window:** A new window will appear, displaying the live feedback from your connected camera.
+3.  **alert.wav:** Have a file named "alert.wav" on the same directory for the alarm to work. Sound support available from GUIBETA-PROTO2 and further releases.
 
 ## Contributing
 
