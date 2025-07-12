@@ -22,7 +22,7 @@ To launch the OpenCLOS GUI and begin detection:
 
 2.  **Execute the Python Script:**
     ```bash
-    python3 GUIBETA-PROTO1.py
+    python3 GUIBETA-PROTO<VERSION#>.py
     ```
 
     This command will open the OpenCLOS GUI window.
