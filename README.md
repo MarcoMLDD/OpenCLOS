@@ -40,6 +40,9 @@ Once the GUI is open:
 We welcome contributions to the OpenCLOS project! If you'd like to contribute, please fork the repository and submit a pull request.
 
 ## Acknowledgments
-To my research groupmates, this wouldn't be possible without you!
+This project uses code and data from [codeniko/shape_predictor_81_face_landmarks](https://github.com/codeniko/shape_predictor_81_face_landmarks),
+which is licensed under the BSD 3-Clause License.
+
+To my research groupmates, this project wouldn't be possible without you!
 * J. Rodriguez
 * R. Punzalan
