@@ -1,4 +1,4 @@
-# OpenCLOS: Driver Weariness Detection System (Beta)
+# OpenCLOS: Driver Weariness Detection System
 
 OpenCLOS is a project designed to detect driver weariness using a PERCLOS (Proportion of Eyelid Closure Over the Pupil Over Time) system. This repository contains the beta version of the OpenCLOS GUI application.
 
@@ -33,7 +33,8 @@ Once the GUI is open:
 
 1.  **Click the "Connect" Button:** Locate and tap the "Connect" button within the OpenCLOS GUI.
 2.  **Camera Feedback Window:** A new window will appear, displaying the live feedback from your connected camera.
-3.  **alert.wav:** Have a file named "alert.wav" on the same directory for the alarm to work. Sound support available from GUIBETA-PROTO2 and further releases.
+3.  **alert.wav:** Have a file named "alert.wav" in the same directory for the alarm to work. Sound support available from GUIBETA-PROTO2 and further releases.
+4.  **shape_predictor_81_face_landmarks.dat:** This file needs to be in the same directory as the .py file. Check ## Acknowledgments for the GitHub repository.
 
 ## Contributing
 
