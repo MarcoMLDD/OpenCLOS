@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # OpenCLOS Auto-start Installation for Armbian/Orange Pi 3
+# OpenCLOS v1.1
 # THIS IS INTRUSIVE AND WILL INSTALL ALL THE NEEDED DEPENDENCIES! You have been warned!
 
 # Colors for output
