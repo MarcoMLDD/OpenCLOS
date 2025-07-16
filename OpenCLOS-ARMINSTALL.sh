@@ -11,6 +11,14 @@ PURPLE='\033[0;35m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Function to print section headers
+section() {
+    echo -e "\n${BLUE}===[ $1 ]===${NC}"
+    if [ -n "$2" ]; then
+        echo -e "${YELLOW}$2${NC}"
+    fi
+}
+
 # Display purple ASCII art
 echo -e "${PURPLE}"
 cat << "EOF"
@@ -24,20 +32,24 @@ cat << "EOF"
 EOF
 echo -e "${NC}"
 
-# Display warning and confirmation
-section "IMPORTANT WARNING"
-echo -e "${RED}THIS INSTALLATION SCRIPT WILL:${NC}"
-echo -e "1. Download and install packages from the internet (requires active internet connection)"
-echo -e "2. Modify system configurations"
-echo -e "3. Create a swap file (2GB)"
-echo -e "4. Install multiple dependencies including Python packages"
-echo -e "5. Build and optimize dlib for ARM architecture"
-echo -e "6. Download facial recognition models (68MB)"
-echo -e "7. Install OpenCLOS in /opt/openclos"
-echo -e "8. Create a systemd service to auto-start the application"
-echo -e "\n${YELLOW}THIS WILL CONSUME SIGNIFICANT DISK SPACE AND MAY TAKE A WHILE TO COMPLETE${NC}\n"
+# Display comprehensive warning and confirmation
+section "IMPORTANT WARNING" "THIS SCRIPT WILL MAKE SIGNIFICANT CHANGES TO YOUR SYSTEM"
+echo -e "${RED}BY CONTINUING, YOU ACKNOWLEDGE THAT THIS SCRIPT WILL:${NC}"
+echo -e "1. ${YELLOW}Download and install packages from the internet${NC} (requires active internet connection)"
+echo -e "2. ${YELLOW}Modify system configurations${NC} (including creating a 2GB swap file)"
+echo -e "3. ${YELLOW}Install system dependencies${NC} (Python, build tools, media libraries)"
+echo -e "4. ${YELLOW}Compile dlib from source${NC} (optimized for ARM, may take 15-30 minutes)"
+echo -e "5. ${YELLOW}Install Python packages${NC} (including OpenCV, numpy, dlib, pygame)"
+echo -e "6. ${YELLOW}Download facial recognition models${NC} (68MB shape predictor)"
+echo -e "7. ${YELLOW}Install OpenCLOS in /opt/openclos${NC}"
+echo -e "8. ${YELLOW}Create a systemd service${NC} (to auto-start the application)"
+echo -e "\n${RED}REQUIREMENTS:${NC}"
+echo -e "- Active internet connection"
+echo -e "- At least 3GB of free disk space"
+echo -e "- 30-60 minutes of time (depending on hardware)"
+echo -e "\n${RED}THIS PROCESS CANNOT BE EASILY UNDONE!${NC}\n"
 
-read -p "Do you want to continue with the installation? [y/N] " -n 1 -r
+read -p "Do you understand and accept these changes? [y/N] " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     echo -e "${RED}Installation aborted by user${NC}"
@@ -56,12 +68,6 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Function to print section headers
-section() {
-    echo -e "\n${BLUE}===[ $1 ]===${NC}"
-    echo -e "${YELLOW}$2${NC}"  # Description parameter added
-}
-
 # Function to setup swap
 setup_swap() {
     section "Configuring Swap Space" "Creating 2GB swap file to improve performance on memory-constrained ARM devices"
@@ -71,7 +77,7 @@ setup_swap() {
         sudo mkswap /swapfile
         sudo swapon /swapfile
         echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-        echo -e "${GREEN}1GB swap file created${NC}"
+        echo -e "${GREEN}2GB swap file created${NC}"
     else
         echo -e "${YELLOW}Swap file already exists${NC}"
     fi
@@ -83,10 +89,12 @@ install_dependencies() {
     sudo apt-get update
     sudo apt-get install -y \
         python3 python3-dev python3-pip python3-venv \
-        build-essential cmake git wget \
+        build-essential cmake git wget unzip \
         libjpeg-dev libpng-dev libatlas-base-dev \
         libopenblas-dev libgtk-3-dev libcanberra-gtk-module \
-        libv4l-dev libxvidcore-dev libx264-dev
+        libv4l-dev libxvidcore-dev libx264-dev \
+        ffmpeg libsm6 libxext6 \
+        python3-tk python3-dev-tk
 }
 
 # Function to build optimized dlib
@@ -130,7 +138,8 @@ include_dirs = /usr/include/openblas" > ~/.numpy-site.cfg
         scipy==1.7.3 \
         psutil==5.9.0 \
         pygame==2.1.2 \
-        Pillow==9.2.0
+        Pillow==9.2.0 \
+        tk==0.1.0
 }
 
 # Function to download dlib model
@@ -141,7 +150,7 @@ download_dlib_model() {
     if [ ! -f "$model_file" ]; then
         wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2 -O model.bz2
         bunzip2 model.bz2
-        sudo mv shape_predictor_68_face_landmarks.dat.bz2.out "$model_file"
+        sudo mv shape_predictor_68_face_landmarks.dat "$model_file"
         rm -f model.bz2
         echo -e "${GREEN}Model downloaded to $model_file${NC}"
     else
