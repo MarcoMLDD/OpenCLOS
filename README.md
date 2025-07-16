@@ -36,6 +36,15 @@ Once the GUI is open:
 3.  **alert.wav:** Have a file named "alert.wav" in the same directory for the alarm to work. Sound support available from GUIBETA-PROTO2 and further releases.
 4.  **shape_predictor_81_face_landmarks.dat:** This file needs to be in the same directory as the .py file. Check ## Acknowledgments for the GitHub repository.
 
+### Notes from Marco
+1. After release v1.1, updates/support for x86_64 and other operating systems such as Windows and macOS will end. This is so that the development would be focused on single-board ARM computers, as intentionally intended by the project team. Despite that, the code for x86_64 will remain in the source code (v1.0) and in v1.1.
+2. On a single-board ARM computer, setting up the OpenCLOS system is easy. Just use the OpenCLOS-ARMINSTALL.sh (download it first lol)
+```bash
+cd /path/to/your/OpenCLOS-ARMINSTALL.sh/directory
+chmod +x OpenCLOS-ARMINSTALL.sh
+./OpenCLOS-ARMINSTALL.sh #add sudo if needed
+```
+
 ## Contributing
 
 We welcome contributions to the OpenCLOS project! If you'd like to contribute, please fork the repository and submit a pull request.
