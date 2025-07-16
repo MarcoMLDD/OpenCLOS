@@ -29,7 +29,7 @@ section "IMPORTANT WARNING"
 echo -e "${RED}THIS INSTALLATION SCRIPT WILL:${NC}"
 echo -e "1. Download and install packages from the internet (requires active internet connection)"
 echo -e "2. Modify system configurations"
-echo -e "3. Create a swap file (1GB)"
+echo -e "3. Create a swap file (2GB)"
 echo -e "4. Install multiple dependencies including Python packages"
 echo -e "5. Build and optimize dlib for ARM architecture"
 echo -e "6. Download facial recognition models (68MB)"
@@ -64,9 +64,9 @@ section() {
 
 # Function to setup swap
 setup_swap() {
-    section "Configuring Swap Space" "Creating 1GB swap file to improve performance on memory-constrained ARM devices"
+    section "Configuring Swap Space" "Creating 2GB swap file to improve performance on memory-constrained ARM devices"
     if [ ! -f /swapfile ]; then
-        sudo fallocate -l 1G /swapfile
+        sudo fallocate -l 2G /swapfile
         sudo chmod 600 /swapfile
         sudo mkswap /swapfile
         sudo swapon /swapfile
