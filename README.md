@@ -1,14 +1,12 @@
 # OpenCLOS: Driver Weariness Detection System
 
-OpenCLOS is a project designed to detect driver weariness using a PERCLOS (Proportion of Eyelid Closure Over the Pupil Over Time) system. This repository contains the beta version of the OpenCLOS GUI application.
+OpenCLOS is a project designed to detect driver weariness using a PERCLOS (Proportion of Eyelid Closure Over the Pupil Over Time) system. The files in this repository are still in development, mainly for ARM, and some support on x86_64 (Please read "Notes from Marco" below).
 
 ## Features (Beta)
 
 * **PERCLOS-based Weariness Detection:** Utilizes the PERCLOS method to monitor eye closure and infer driver fatigue.
 * **Simple Graphical User Interface (GUI):** Provides an intuitive interface for interacting with the system.
 * **Real-time Camera Feed:** Displays live camera input for monitoring.
-
-## Note: I'm really lazy and most of this README is AI-generated haha. So I'm REALLY REALLY sorry If I couldn't list the dependencies T_T Also, this was tested on Fedora 42. (do what you want with that info)
 
 ### Running the GUI
 
@@ -24,7 +22,6 @@ To launch the OpenCLOS GUI and begin detection:
     ```bash
     python3 OpenCLOSv_._.py #add --cli for the CLI version, available from GUIBETA-PROTO2 and further releases
     ```
-
     This command will open the OpenCLOS GUI window.
 
 ### Connecting Your Camera & Other Peripherals
@@ -38,12 +35,13 @@ Once the GUI is open:
 
 ### Notes from Marco
 1. After release v1.1, updates/support for x86_64 and other operating systems such as Windows and macOS will end. This is so that the development would be focused on single-board ARM computers, as intentionally intended by the project team. Despite that, the code for x86_64 will remain in the source code (v1.0) and in v1.1.
-2. On a single-board ARM computer, setting up the OpenCLOS system is easy. Just use the OpenCLOS-ARMINSTALL.sh (download it first lol)
+2. On a single-board ARM computer, setting up the OpenCLOS system is easy. Just use the OpenCLOS-ARMINSTALL.sh (download it first lol). !!READ THE WARNINGS FIRST BEFORE PROCEEDING!!
 ```bash
 cd /path/to/your/OpenCLOS-ARMINSTALL.sh/directory
 chmod +x OpenCLOS-ARMINSTALL.sh
 ./OpenCLOS-ARMINSTALL.sh #add sudo if needed
 ```
+3. This was programmed using a Fedora 42 desktop running Gnome. Do whatever you want with that information.
 
 ## Contributing
 
